@@ -5,6 +5,7 @@ function calcular(event) {
   const altura = Number(document.getElementById('altura').value);
   const genero = seleciona('genero');
   const dados = calcTMB(peso, idade, altura, genero);
+  const dadosIMC= calcIMC(peso, altura)
 
   document.getElementById('metabolismo_basal').innerHTML = Math.ceil(
     dados.basal
@@ -27,6 +28,11 @@ function calcular(event) {
     dados.perderPeso
   );
 
+  document.getElementById('imc').innerHTML = Math.ceil(
+    dadosIMC
+  );
+  document.getElementById('imc_classification').innerHTML = calcTabelaIMC(dadosIMC) ;
+  
   document.getElementById('result-data').style.visibility = 'visible';
 }
 
@@ -63,5 +69,8 @@ function calcIMC(peso, altura) {
 
   const alturaMetros = altura / 100;
   const imc = peso / (alturaMetros * alturaMetros);
+
   return imc.toFixed(2);
 }
+
+module.exports = { calcIMC,calcTMB }

@@ -5,16 +5,18 @@ function calcTabelaIMC(imc) {
   const validationIMCObesidade2 = imc > 35 && imc <= 39.9
 
   return imc < 18.5
-    ? 'Thinness'
+    ? 'Magreza'
     : validationIMCNormal
     ? 'Normal'
     : validationIMCSobrepeso
-    ? 'Overweight'
+    ? 'Sobrepeso'
     : validationIMCObesidade1
-    ? 'Degree obesity I'
+    ? 'Obesidade grau I'
     : validationIMCObesidade2
-    ? 'Degree obesity II'
+    ? 'Obesidade grau II'
     : imc > 40
-    ? 'Degree obesity III'
+    ? 'Obesidade grau III'
     : ''
 }
+
+module.exports = { calcTabelaIMC }
